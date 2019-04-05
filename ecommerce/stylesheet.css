@@ -1,0 +1,608 @@
+* {
+    font-family: 'Seils Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#content {
+    width: 100%;
+}
+
+#last {
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    padding: 10px;
+    width: 100%;
+    font: 300 38px Seils Sans, sans-serif;
+    text-align: center;
+    color: #7B7B7B;
+    background: #A7A7A7;
+}
+
+.content2 {
+    padding: 10px;
+    font: 300 20px Seils Sans, sans-serif;
+    text-align: center;
+    color: #7B7B7B;
+    margin-right: 8px;
+    background: #ddd;
+}
+
+.footer {
+    background: #ddd;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    font-family: Entypo;
+    font-size: 25px;
+    text-align: center;
+    color: #bbb;
+    border-radius: 50%;
+    background: #eee;
+    overflow: hidden;
+    transition: color 0.3s;
+}
+
+.social:hover {
+    color: #59d;
+    cursor: pointer;
+}
+
+.social {
+    box-shadow: 1px 1px rgb(210, 210, 210), 2px 2px rgb(210, 210, 210), 3px 3px rgb(211, 211, 211), 4px 4px rgb(211, 211, 211), 5px 5px rgb(211, 211, 211), 6px 6px rgb(212, 212, 212), 7px 7px rgb(212, 212, 212), 8px 8px rgb(212, 212, 212), 9px 9px rgb(213, 213, 213), 10px 10px rgb(213, 213, 213), 11px 11px rgb(214, 214, 214), 12px 12px rgb(214, 214, 214), 13px 13px rgb(214, 214, 214), 14px 14px rgb(215, 215, 215), 15px 15px rgb(215, 215, 215), 16px 16px rgb(215, 215, 215), 17px 17px rgb(216, 216, 216), 18px 18px rgb(216, 216, 216), 19px 19px rgb(216, 216, 216), 20px 20px rgb(217, 217, 217), 21px 21px rgb(217, 217, 217), 22px 22px rgb(218, 218, 218), 23px 23px rgb(218, 218, 218), 24px 24px rgb(218, 218, 218), 25px 25px rgb(219, 219, 219), 26px 26px rgb(219, 219, 219), 27px 27px rgb(219, 219, 219), 28px 28px rgb(220, 220, 220), 29px 29px rgb(220, 220, 220), 30px 30px rgb(221, 221, 221);
+    text-shadow: 1px 1px rgb(226, 226, 226), 2px 2px rgb(227, 227, 227), 3px 3px rgb(227, 227, 227), 4px 4px rgb(228, 228, 228), 5px 5px rgb(229, 229, 229), 6px 6px rgb(229, 229, 229), 7px 7px rgb(230, 230, 230), 8px 8px rgb(230, 230, 230), 9px 9px rgb(231, 231, 231), 10px 10px rgb(232, 232, 232), 11px 11px rgb(232, 232, 232), 12px 12px rgb(233, 233, 233), 13px 13px rgb(233, 233, 233), 14px 14px rgb(234, 234, 234), 15px 15px rgb(235, 235, 235), 16px 16px rgb(235, 235, 235), 17px 17px rgb(236, 236, 236), 18px 18px rgb(236, 236, 236), 19px 19px rgb(237, 237, 237), 20px 20px rgb(238, 238, 238);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#wrap {
+    width: 90%;
+    max-width: 1300px;
+    margin-left: 310px;
+}
+
+.columns_2 figure {
+    width: 20%;
+    margin-right: 1%;
+}
+
+.columns_2 figure:nth-child(2) {
+    margin-right: 0;
+}
+
+.columns_3 figure {
+    width: 20%;
+    margin-right: 1%;
+}
+
+.columns_3 figure:nth-child(3) {
+    margin-right: 0;
+}
+
+.columns_4 figure {
+    width: 20%;
+    margin-right: 1%;
+}
+
+.columns_4 figure:nth-child(4) {
+    margin-right: 0;
+}
+
+.columns_5 figure {
+    width: 20%;
+    margin-right: 1%;
+}
+
+.columns_5 figure:nth-child(5) {
+    margin-right: 0;
+}
+
+#columns figure:hover {
+    transform: scale(1.1);
+}
+
+#columns:hover figure:not(:hover) {
+    opacity: 0.4000000059604644775390625;
+}
+
+div#columns figure {
+    display: inline-block;
+    background: #FEFEFE;
+    border: #FAFAFA solid 2px;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 0 0 15px;
+    padding: 15px;
+    padding-bottom: 5px;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+div#columns figure img {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+}
+
+div#columns figure figcaption {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.5;
+    height: 25px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+}
+
+a.button {
+    padding: 10px;
+    background: #ff6842;
+    margin: 1px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    transition: all 1s linear;
+    text-decoration: none;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    border-bottom: 3px solid #ff4314;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+a.button:hover {
+    background: #ff4314;
+    border-bottom: 3px solid salmon;
+    color: #f1f2f3;
+}
+
+@media screen and (max-width:960px) {
+    #columns figure {
+        width: 24%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    #columns figure {
+        width: 32%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    #columns figure {
+        width: 49%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    #columns figure {
+        width: 100%;
+    }
+}
+
+.centered {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+::-webkit-resizer {
+    display: none;
+}
+
+section {
+    margin-top: 30px;
+    margin-bottom: 100px;
+    margin-left: 490px;
+}
+
+form#contact {
+    width: 700px;
+    padding: 20px;
+}
+
+.form-control {
+    box-shadow: none;
+    border-radius: 0;
+    outline: none;
+    border: none;
+    box-shadow: none !important;
+}
+
+.form-control:hover {
+    background-color: #d1d1d1;
+}
+
+textarea#message {
+    min-height: 300px;
+    resize: vertical;
+    overflow: hidden;
+    border-bottom: 0;
+}
+
+textarea#message:hover {
+    background: #d1d1d1;
+}
+
+button#send {
+    background: #d1d1d1;
+    margin-top: 40px;
+    letter-spacing: 4px;
+}
+
+#contactFormHeader {
+    text-align: center;
+    font: 300 38px Seils Sans, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+}
+
+ul.dropdown-cart {
+    background-color: #232323;
+    min-width: 250px;
+}
+
+ul.dropdown-cart li .item {
+    display: block;
+    padding: 10px 10px;
+    margin: 3px 0;
+}
+
+ul.dropdown-cart li .item:hover {
+    background-color: #fff;
+    color: #fff;
+}
+
+ul.dropdown-cart li .item:after {
+    background-color: #fff;
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+ul.dropdown-cart li .item-left {
+    float: left;
+}
+
+ul.dropdown-cart li .item-left img,
+ul.dropdown-cart li .item-left span.item-info {
+    float: left;
+}
+
+ul.dropdown-cart li .item-left span.item-info {
+    margin-left: 10px;
+}
+
+ul.dropdown-cart li .item-left span.item-info span {
+    color: #7c7c7c;
+    display: block;
+}
+
+ul.dropdown-cart li .item-right {
+    float: right;
+}
+
+ul.dropdown-cart li .item-right button {
+    background: #000;
+    margin-top: 14px;
+}
+
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    vertical-align: middle;
+    color: #000000;
+}
+
+@media screen and (max-width:600px) {
+    table#cart tbody td .form-control {
+        color: #000000;
+        width: 20%;
+        display: inline !important;
+    }
+    .actions .btn {
+        color: #000000;
+        width: 36%;
+        margin: 1.5em 0;
+    }
+    .actions .btn-info {
+        color: #000000;
+        float: left;
+    }
+    .actions .btn-danger {
+        color: #000000;
+        float: right;
+    }
+    table#cart thead {
+        display: none;
+        color: #000000;
+    }
+    table#cart tbody td {
+        display: block;
+        padding: 0.6rem;
+        min-width: 320px;
+        color: #000000;
+    }
+    table#cart tbody tr td:first-child {
+        background: #000000;
+        color: #000000;
+    }
+    table#cart tbody td:before {
+        color: #000000;
+        content: attr(data-th);
+        font-weight: bold;
+        display: inline-block;
+        width: 8rem;
+    }
+    table#cart tfoot td {
+        display: block;
+    }
+    table#cart tfoot td .btn {
+        display: block;
+    }
+}
+
+#basketeditText {
+    text-align: center;
+    font: 300 38px Seils Sans, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+}
+
+.loginmodal-container {
+    padding: 30px;
+    max-width: 350px;
+    width: 100% !important;
+    margin-top: 150px;
+    margin-left: 125px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    font-family: Seils Sans;
+}
+
+.loginmodal-container h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 1.8em;
+    font-family: Seils Sans;
+}
+
+.loginmodal-container input[type="submit"] {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.loginmodal-container input[type="text"],
+input[type="password"] {
+    color: #000000;
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #fff;
+    border: #7B7B7B solid 1px;
+    border-top: 1px solid #7B7B7B;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.loginmodal-container input[type="text"]:hover,
+input[type="password"]:hover {
+    border: #7B7B7B solid 1px;
+    border-top: 1px solid #7B7B7B;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) inset;
+}
+
+.loginmodal {
+    text-align: center;
+    font-size: 14px;
+    font-family: Seils Sans, sans-serif;
+    font-weight: 700;
+    height: 36px;
+    padding: 0 8px;
+}
+
+.loginmodal-submit {
+    border: 0;
+    color: #000000;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 17px 0;
+    font-family: Seils Sans;
+    font-size: 14px;
+}
+
+.loginmodal-submit:hover {
+    color: #fff;
+    border: 0;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    background-color: #7B7B7B;
+}
+
+.loginmodal-container a {
+    font-family: Seils Sans;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    opacity: 0.60000002384185791015625;
+    transition: opacity 0.5s ease;
+}
+
+.login-help {
+    font-size: 12px;
+}
+
+.login-btn {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.registermodal-container {
+    padding: 30px;
+    max-width: 350px;
+    width: 100% !important;
+    margin-top: 150px;
+    margin-left: 125px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    font-family: Seils Sans;
+}
+
+.registermodal-container h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 1.8em;
+    font-family: Seils Sans;
+}
+
+.registermodal-container input[type="submit"] {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.registermodal-container input[type="text"],
+input[type="password"] {
+    color: #000000;
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #fff;
+    border: #7B7B7B solid 1px;
+    border-top: 1px solid #7B7B7B;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.registermodal-container input[type="text"]:hover,
+input[type="password"]:hover {
+    border: #7B7B7B solid 1px;
+    border-top: 1px solid #7B7B7B;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) inset;
+}
+
+.registermodal {
+    text-align: center;
+    font-size: 14px;
+    font-family: Seils Sans, sans-serif;
+    font-weight: 700;
+    height: 36px;
+    padding: 0 8px;
+}
+
+.registermodal-submit {
+    border: 0;
+    color: #000000;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 17px 0;
+    font-family: Seils Sans;
+    font-size: 14px;
+}
+
+.registermodal-submit:hover {
+    color: #fff;
+    border: 0;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    background-color: #7B7B7B;
+}
+
+.registermodal-container a {
+    font-family: Seils Sans;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    opacity: 0.60000002384185791015625;
+    transition: opacity 0.5s ease;
+}
+
+.register-help {
+    font-size: 12px;
+}
+
+.register-btn {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#offerImg {
+    margin-left: 225px;
+}
+
+#productsForSale {
+    font-family: Seils Sans, sans-serif;
+    font-size: 50px;
+    color: #000000;
+    margin-left: 700px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+form.example input[type="text"] {
+    padding: 5px;
+    font-size: 17px;
+    border: black solid 1px;
+    float: left;
+    width: 80%;
+    height: 10%;
+    background: #f1f1f1;
+    color: black;
+    margin-top: 7px;
+}
+
+form.example button {
+    float: left;
+    width: 15%;
+    padding: 5px;
+    background: #2196F3;
+    color: black;
+    font-size: 17px;
+    border: grey solid 0.5px;
+    border-left: none;
+    cursor: pointer;
+    margin-top: 7.4px;
+}
+
+form.example button:hover {
+    background: gray;
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}

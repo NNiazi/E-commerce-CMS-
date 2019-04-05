@@ -1,0 +1,46 @@
+       * {
+           font-family: 'Seils Sans', sans-serif;
+           margin: 0;
+           padding: 0;
+           color: #000000;
+       }
+       
+       body {
+           background-image: url("img/logoCMS1.png");
+       }
+       
+       #productText {
+           margin-left: 44px;
+       }
+       
+       #productText2 {
+           margin-left: 165px;
+       }
+       
+       #productText3 {
+           margin-left: 44px;
+       }
+       
+       #orderEdit {
+           margin-top: 850px;
+       }
+       
+       #productAdd {
+           margin-top: 850px;
+       }
+       
+       #addContainer {
+           font-family: "Harabara";
+       }
+       
+       #existingProduct {
+           font-family: "Harabara";
+       }
+       
+       #deleteProduct {
+           font-family: "Harabara";
+       }
+       
+       #newProduct {
+           font-family: "Harabara";
+       }

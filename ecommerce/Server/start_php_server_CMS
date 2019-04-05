@@ -1,0 +1,2 @@
+cd ~/Documents/ecommerce/CMS
+php -S localhost:8000

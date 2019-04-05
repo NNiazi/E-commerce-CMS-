@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        El Arte
+    </title>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+</head>
+
+<body>
+    <!---         Navigation Bar      -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="products.php">Products</a>
+                </li>
+                <li>
+                    <a href="contacts.php">Contact</a>
+                </li>
+            </ul>
+            <div class="col-sm-3 col-md-3">
+                <form class="example" action="searchProduct.php" method="get" style="margin:auto;max-width:300px">
+                    <input type="text" placeholder="Search.." name="name">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <ul class="nav navbar-nav navbar-right" id="display">
+                <li>
+                    <a data-target="#login" data-toggle="modal" href="#">Login</a>
+                </li>
+                <li>
+                    <a data-target="#register" data-toggle="modal" href="#">Register</a>
+                </li>
+                <li class="dropdown">
+                    <a href="checkout.php" role="button"><span class="glyphicon glyphicon-shopping-cart"></span></span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="content">
+        <img id="last" src="img/logo2.png">
+    </div>
+    <!---         Login Modal       -->
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="login-modal" role="dialog" style="display: none;" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1>
+                    Login to Your Account
+                </h1><br>
+                <form>
+                    <input name="user" placeholder="Username" type="text"> <input name="pass" placeholder="Password" type="password"> <input class="login loginmodal-submit" name="login" type="submit" value="Login">
+                </form>
+                <div class="login-help">
+                    <a href="#">Register</a> - <a href="#">Forgot Password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //Global variables 
+        var loggedInStr = "<ul class='nav navbar-nav navbar-right'><li><a onclick='logout()'>Logout</a></li><li class='dropdown'><a href='checkout.php' role='button'><span class='glyphicon glyphicon-shopping-cart'></span></span></a></li></ul>";
+        //"Logged in <button onclick='logout()'>Logout</button>";
+        var loginStr = document.getElementById("display").innerHTML;
+        var request = new XMLHttpRequest();
+
+        //Check login when page loads
+        window.onload = checkLogin;
+
+        //Checks whether user is logged in.
+        function checkLogin() {
+            //Create event handler that specifies what should happen when server responds
+            request.onload = function() {
+                if (request.responseText === "ok") {
+                    document.getElementById("display").innerHTML = loggedInStr;
+                } else {
+                    console.log(request.responseText);
+                    document.getElementById("display").innerHTML = loginStr;
+                }
+            };
+            //Set up and send request
+            request.open("GET", "check_login.php");
+            request.send();
+        }
+
+        //Attempts to log in user to server
+        function login() {
+            //Create event handler that specifies what should happen when server responds
+            request.onload = function() {
+                //Check HTTP status code
+                if (request.status === 200) {
+                    //Get data from server
+                    var responseData = request.responseText;
+
+                    //Add data to page
+                    if (responseData === "ok") {
+                        document.getElementById("login").innerHTML = loggedInStr;
+                        document.getElementById("ErrorMessages").innerHTML = ""; //Clear error messages
+                    } else
+                        document.getElementById("ErrorMessages").innerHTML = request.responseText;
+                } else
+                    document.getElementById("ErrorMessages").innerHTML = "Error communicating with server";
+            };
+
+            //Extract login data
+            var usrEmail = document.getElementById("usernamel").value;
+            var usrPassword = document.getElementById("passwordl").value;
+
+            //Set up and send request
+            request.open("POST", "customer_login.php");
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send("Username=" + usrEmail + "&Password=" + usrPassword);
+        }
+
+        //Logs the user out.
+        function logout() {
+            //Create event handler that specifies what should happen when server responds
+            request.onload = function() {
+                checkLogin();
+            };
+            //Set up and send request
+            request.open("GET", "logout.php");
+            request.send();
+        }
+    </script>
+    <!---         Register Modal      -->
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="register-modal" role="dialog" style="display: none;" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="registermodal-container">
+                <h1>
+                    Register For Account
+                </h1><br>
+                <form>
+                    <input name="Name" placeholder="Name" type="text"> <input name="Surname" placeholder="Surname" type="text"> <input name="Username" placeholder="Username" type="text"> <input name="Password" placeholder="Password" type="password">
+                    <input name="Confirm Password" placeholder="Confirm Password" type="password"> <input name="Phone" placeholder="Phone Number" type="text"> <input class="register registermodal-submit" name="login" type="submit" value="Register">
+                </form>
+                <div class="register-help">
+                    <a data-target="#login-modal" data-toggle="modal" href="#">Already registered? Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---         Basket Checkout Edit      -->
+    <div id="basketeditText">
+        <h1>
+            Edit Basket
+        </h1>
+    </div>
+    <div class="container">
+        <table class="table table-hover table-condensed" id="cart">
+            <thead>
+                <tr>
+                    <th style="color:#000000; width:50%">
+                        Product
+                    </th>
+                    <th style="color:#000000; width:10%">
+                        Price
+                    </th>
+                    <th style="color:#000000; width:8%">
+                        Quantity
+                    </th>
+                    <th class="text-center" style="color:#000000; width:22%">
+                        Subtotal
+                    </th>
+                    <th style="color:#000000; width:10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs">
+                                <img alt="..." class="img-responsive" src="http://placehold.it/100x100">
+                            </div>
+                            <div class="col-sm-10">
+                                <h4 class="nomargin" style="color:#000000;">
+                                    Product 1
+                                </h4>
+                                <p style="color:#000000;">
+                                    Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price">
+                        $1.99
+                    </td>
+                    <td data-th="Quantity">
+                        <input class="form-control text-center" type="number" value="1">
+                    </td>
+                    <td class="text-center" data-th="Subtotal">
+                        1.99
+                    </td>
+                    <td class="actions" data-th="">
+                        <button class="btn btn-info btn-sm" style="background:white;"><i class="fa fa-refresh" style="color:#000000;">R</i></button> <button class="btn btn-danger btn-sm" style="background:red;"><i class="fa fa-trash-o" style="color:#000000;">X</i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs">
+                                <img alt="..." class="img-responsive" src="http://placehold.it/100x100">
+                            </div>
+                            <div class="col-sm-10">
+                                <h4 class="nomargin" style="color:#000000;">
+                                    Product 2
+                                </h4>
+                                <p style="color:#000000;">
+                                    Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price">
+                        $1.99
+                    </td>
+                    <td data-th="Quantity">
+                        <input class="form-control text-center" type="number" value="1">
+                    </td>
+                    <td class="text-center" data-th="Subtotal">
+                        1.99
+                    </td>
+                    <td class="actions" data-th="">
+                        <button class="btn btn-info btn-sm" style="background:white;"><i class="fa fa-refresh" style="color:#000000;">R</i></button> <button class="btn btn-danger btn-sm" style="background:red;"><i class="fa fa-trash-o" style="color:#000000;">X</i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs">
+                                <img alt="..." class="img-responsive" src="http://placehold.it/100x100">
+                            </div>
+                            <div class="col-sm-10">
+                                <h4 class="nomargin" style="color:#000000;">
+                                    Product 3
+                                </h4>
+                                <p style="color:#000000;">
+                                    Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price">
+                        $1.99
+                    </td>
+                    <td data-th="Quantity">
+                        <input class="form-control text-center" type="number" value="1">
+                    </td>
+                    <td class="text-center" data-th="Subtotal">
+                        1.99
+                    </td>
+                    <td class="actions" data-th="">
+                        <button class="btn btn-info btn-sm" style="background:white;"><i class="fa fa-refresh" style="color:#000000;">R</i></button> <button class="btn btn-danger btn-sm" style="background:red;"><i class="fa fa-trash-o" style="color:#000000;">X</i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs">
+                                <img alt="..." class="img-responsive" src="http://placehold.it/100x100">
+                            </div>
+                            <div class="col-sm-10">
+                                <h4 class="nomargin" style="color:#000000;">
+                                    Product 4
+                                </h4>
+                                <p style="color:#000000;">
+                                    Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price">
+                        $1.99
+                    </td>
+                    <td data-th="Quantity">
+                        <input class="form-control text-center" type="number" value="1">
+                    </td>
+                    <td class="text-center" data-th="Subtotal">
+                        1.99
+                    </td>
+                    <td class="actions" data-th="">
+                        <button class="btn btn-info btn-sm" style="background:white;"><i class="fa fa-refresh" style="color:#000000;">R</i></button> <button class="btn btn-danger btn-sm" style="background:red;"><i class="fa fa-trash-o" style="color:#000000;">X</i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs">
+                                <img alt="..." class="img-responsive" src="http://placehold.it/100x100">
+                            </div>
+                            <div class="col-sm-10">
+                                <h4 class="nomargin" style="color:#000000;">
+                                    Product 5
+                                </h4>
+                                <p style="color:#000000;">
+                                    Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price">
+                        $1.99
+                    </td>
+                    <td data-th="Quantity">
+                        <input class="form-control text-center" type="number" value="1">
+                    </td>
+                    <td class="text-center" data-th="Subtotal">
+                        1.99
+                    </td>
+                    <td class="actions" data-th="">
+                        <button class="btn btn-info btn-sm" style="background:white;"><i class="fa fa-refresh" style="color:#000000;">R</i></button> <button class="btn btn-danger btn-sm" style="background:red;"><i class="fa fa-trash-o" style="color:#000000;">X</i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <a class="btn btn-warning" href="#" style="background:orange;"><i class="fa fa-angle-left"></i>Continue Shopping</a>
+                    </td>
+                    <td class="hidden-xs" colspan="2"></td>
+                    <td class="hidden-xs text-center">
+                        <strong style="color:black;">Total $1.99</strong>
+                    </td>
+                    <td>
+                        <a class="btn btn-success btn-block" href="#" style="background:green;">Checkout<i class="fa fa-angle-right"></i></a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!---         Footer      -->
+    <div class="content">
+        Follow Us
+    </div>
+    <div class="footer">
+        <div>
+            <img class="social" src="img/facebook.png">&#62217; <img class="social" src="img/twitter.png">&#62223; <img class="social" src="img/google+.png">&#62232; <img class="social" src="img/instagram.png">&#62235;
+        </div>
+        <div class="content2">
+            ELARTE.COM<br> 2018 Noman Niazi And Group All Rights Reserved
+        </div>
+    </div>
+</body>
+
+</html>
